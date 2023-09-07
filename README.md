@@ -62,6 +62,7 @@
 - **Read Available posts**
 - **Update Published posts**
 - **Delete Published posts**
+- **run rspec tests**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -137,6 +138,7 @@ To run tests, run the following command:
 - [ ] **Group meetups and formation**
 - [ ] **Publish Statuses**
 - [ ] **Create communication Channels**
+- [ ] **Add Forms**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
