@@ -1,1 +1,11 @@
-<h1>Here is a post for a given id </h1>
+<div class="post">
+  <div class="post-title">
+    <h2>Post:<%= @post.id %> by <%= @post.author.Name %> </h2>
+    <p>Comments: <%= @post.CommentsCounter %>, Likes: <%= @post.LikesCounter %></p>
+  </div>
+  <h3><%= @post.Title %></h3>
+  <h4><%= @post.Text %></h4>
+  <%@post.five_most_recent_comments.each do |comment|%>
+  <p>User:<%=comment.author.Name%> Comment:<%=comment.Text%>  </p>
+  <%end%>
+</div>

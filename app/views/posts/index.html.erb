@@ -1,1 +1,9 @@
 <h1>Here is a list of posts for a given user</h1>
+<%@posts.each do |post|%>
+<ul>
+<li>post :<%=post.id%> <br> Text :<%=post.Text%> <br> Coments :<%=post.CommentsCounter%> <br> Likes :<%=post.LikesCounter%>  </li>
+</ul>
+<%post.comments.each do |comments|%>
+<li><%=comments.Text%></li>
+<%end%>
+<%end%>

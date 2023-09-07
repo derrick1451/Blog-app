@@ -1,1 +1,12 @@
 <h1>Lists a user depending on the id</h1>
+<div>
+<h2><%=@user_id.Name%></h2>
+<p><%=@user_id.PostsCounter%></p>
+</div>
+<p><%=@user_id.Bio%><p>
+<%@user_id.most_3_recent_posts.each do |post|%>
+<ul>
+<li> post:<%=post.id%> <br> Title:<%=post.Title%> <br> Text:<%=post.Text%> <br>
+comments:<%=post.CommentsCounter%> <br> Likes: <%=post.LikesCounter%></li>
+</ul>
+<%end%>

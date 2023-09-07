@@ -1,1 +1,7 @@
 <h1>Lists all users</h1>
+<%@users.each do |user|%>
+<ul>
+<li>User_name:<%=user.Name%> --- Number of posts:<%=user.PostsCounter%>
+user_id: <%=user.id%></li>
+</ul>
+<%end%>
