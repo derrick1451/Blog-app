@@ -15,7 +15,7 @@ RSpec.describe '/posts', type: :request do
     end
   end
   describe 'GET / show' do
-    it 'it returns a successfull response' do
+    it 'it returns successfull response' do
       get '/users/:user_id/posts/:id'
       expect(response).to have_http_status(:ok)
     end
