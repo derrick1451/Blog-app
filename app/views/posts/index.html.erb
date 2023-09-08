@@ -1,9 +1,29 @@
-<h1>Here is a list of posts for a given user</h1>
+<div class='user-container'>
+<div class='user-image-name flex'>
+<img src='<%=@posts[0].author.Photo%>' alt='<%=@posts[0].author.Name%>'>
+<div class='user-content flex'>
+<h2><%=@posts[0].author.Name%></h2>
+<p>Number of posts: <%=@posts[0].author.PostsCounter%></p>
+</div>
+</div>
+<div class='my-posts flex direction'>
+
 <%@posts.each do |post|%>
-<ul>
-<li>post :<%=post.id%> <br> Text :<%=post.Text%> <br> Coments :<%=post.CommentsCounter%> <br> Likes :<%=post.LikesCounter%>  </li>
-</ul>
-<%post.comments.each do |comments|%>
-<li><%=comments.Text%></li>
+<div class='my-post'>
+<h3>Post: <%=post.id%></h3>
+<p><%=post.Text%></p>
+<div class='comments-likes flex'>
+<p>Comments: <%=post.CommentsCounter%></p>
+<p>Likes: <%=post.LikesCounter%></p>
+</div>
+<%post.five_most_recent_comments.each do |comments|%>
+<div class='comments flex'>
+<p><%=comments.author.Name%>:</p>
+<p><%=comments.Text%></p>
+</div>
 <%end%>
+</div>
 <%end%>
+</div>
+<button>pagination</button>
+</div>

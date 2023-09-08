@@ -1,11 +1,12 @@
-<div class="post">
-  <div class="post-title">
+<div class="user-container">
+  <div class="post-title flex">
     <h2>Post:<%= @post.id %> by <%= @post.author.Name %> </h2>
-    <p>Comments: <%= @post.CommentsCounter %>, Likes: <%= @post.LikesCounter %></p>
+    <p>Comments: <%= @post.CommentsCounter %> Likes: <%= @post.LikesCounter %></p>
   </div>
-  <h3><%= @post.Title %></h3>
   <h4><%= @post.Text %></h4>
-  <%@post.five_most_recent_comments.each do |comment|%>
-  <p>User:<%=comment.author.Name%> Comment:<%=comment.Text%>  </p>
+  <div>
+  <%@post.comments.each do |comment|%>
+  <p><%=comment.author.Name%>:<%=comment.Text%>  </p>
   <%end%>
+  </div>
 </div>
