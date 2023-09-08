@@ -1,9 +1,34 @@
-<h1>Lists a user depending on the id</h1>
+<div class='user-container'>
+<div class='user-image-name'>
+<img src='<%=@user_id.Photo%>' alt='<%=@user_id.Name%>'>
 <div>
 <h2><%=@user_id.Name%></h2>
 <p><%=@user_id.PostsCounter%></p>
 </div>
+</div>
 <p><%=@user_id.Bio%><p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%@user_id.most_3_recent_posts.each do |post|%>
 <ul>
 <li> post:<%=post.id%> <br> Title:<%=post.Title%> <br> Text:<%=post.Text%> <br>

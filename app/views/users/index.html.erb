@@ -1,7 +1,13 @@
-<h1>Lists all users</h1>
+<div class="container">
 <%@users.each do |user|%>
-<ul>
-<li>User_name:<%=user.Name%> --- Number of posts:<%=user.PostsCounter%>
-user_id: <%=user.id%></li>
-</ul>
+<a  href='users/<%=user.id%>'>
+<div class='user-body'>
+<img src='<%=user.Photo%>' alt= '<%=user.Name%>'>
+<div class='user-content'>
+<h2><%=user.Name%></h2>
+<p>Number of posts: <%=user.PostsCounter%></p>
+</div>
+</div>
+</a>
 <%end%>
+</div>
