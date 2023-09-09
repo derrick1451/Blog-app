@@ -1,0 +1,12 @@
+<div class='user-container'>
+<h2>Add a comment </h2>
+<%= form_with model: @comment, url:  user_post_comments_path, method: :post, local: true, scope: :comment do  |f|%>
+<div>
+  <%= f.label :Text %><br>
+  <%= f.text_area :Text %>
+</div>
+<div>
+<%= f.submit "Create comment" %>
+</div>
+<% end %>
+</div>

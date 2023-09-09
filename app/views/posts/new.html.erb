@@ -1,0 +1,16 @@
+<div class='user-container'>
+<h1>Add posts</h1>
+<%= form_with model: @post, url: user_posts_path, method: :post, local: true, scope: :post do  |f|%>
+<div>
+  <%= f.label :Title %><br>
+  <%= f.text_field :Title %>
+</div>
+<div>
+  <%= f.label :Text %><br>
+  <%= f.text_area :Text %>
+</div>
+<div>
+<%= f.submit "Create post" %>
+</div>
+<% end %>
+</div>
