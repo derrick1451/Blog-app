@@ -1,1 +1,29 @@
-<h1>Here is a list of posts for a given user</h1>
+<div class='user-container'>
+<div class='user-image-name flex'>
+<img src='<%=@user_post.Photo%>' alt='<%=@user_post.Name%>'>
+<div class='user-content flex'>
+<h2><%=@user_post.Name%></h2>
+<p>Number of posts: <%=@user_post.PostsCounter%></p>
+</div>
+</div>
+<div class='my-posts flex direction'>
+
+<%@posts.each do |post|%>
+<div class='my-post'>
+<h3>Post: <%=post.id%></h3>
+<p><%=post.Text%></p>
+<div class='comments-likes flex'>
+<p>Comments: <%=post.CommentsCounter%></p>
+<p>Likes: <%=post.LikesCounter%></p>
+</div>
+<%post.five_most_recent_comments.each do |comments|%>
+<div class='comments flex'>
+<p><%=comments.author.Name%>:</p>
+<p><%=comments.Text%></p>
+</div>
+<%end%>
+</div>
+<%end%>
+</div>
+<button>pagination</button>
+</div>

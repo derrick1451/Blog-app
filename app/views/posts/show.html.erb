@@ -1,1 +1,12 @@
-<h1>Here is a post for a given id </h1>
+<div class="user-container">
+  <div class="post-title flex">
+    <h2>Post:<%= @post.id %> by <%= @post.author.Name %> </h2>
+    <p>Comments: <%= @post.CommentsCounter %> Likes: <%= @post.LikesCounter %></p>
+  </div>
+  <h4><%= @post.Text %></h4>
+  <div>
+  <%@post.comments.each do |comment|%>
+  <p><%=comment.author.Name%>:<%=comment.Text%>  </p>
+  <%end%>
+  </div>
+</div>
