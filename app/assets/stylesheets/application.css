@@ -138,3 +138,7 @@ button {
 .direction {
   flex-direction: column;
 }
+
+.add-comment {
+  color: #fff;
+}
