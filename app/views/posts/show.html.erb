@@ -9,4 +9,7 @@
   <p><%=comment.author.Name%>:<%=comment.Text%>  </p>
   <%end%>
   </div>
+  
+   <button><%= link_to "Add a comment", new_user_post_comment_path(current_user, @post),class:'add-comment' %></button>
+   <%= button_to 'Like', user_post_likes_path(current_user, @post), method: :post%>
 </div>

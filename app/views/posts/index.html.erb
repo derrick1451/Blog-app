@@ -9,6 +9,7 @@
 <div class='my-posts flex direction'>
 
 <%@posts.each do |post|%>
+<a href="posts/<%=post.id%>">
 <div class='my-post'>
 <h3>Post: <%=post.id%></h3>
 <p><%=post.Text%></p>
@@ -22,8 +23,8 @@
 <p><%=comments.Text%></p>
 </div>
 <%end%>
-</div>
+</div></a>
 <%end%>
 </div>
-<button>pagination</button>
+<button><%= link_to "Create a Post", new_user_post_path(current_user, @post),class:'add-comment' %></button>
 </div>
