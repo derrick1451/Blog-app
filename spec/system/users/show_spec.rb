@@ -34,4 +34,17 @@ RSpec.describe 'User show Page' do
     click_link 'see all posts'
     expect(page).to have_current_path(user_posts_path(user))
   end
+  it "When I click a user's post, it redirects me to that post's show page." do
+    user = User.create(Name: 'derrick', Photo: 'https://placehold.co/200x133', PostsCounter: 0,
+                       Bio: 'I am a software developer')
+    Post.create(Title: 'Post 1', Text: 'Post 1 content', author: user)
+    Post.create(Title: 'Post 2', Text: 'Post 2 content', author: user)
+    Post.create(Title: 'Post 3', Text: 'Post 3 content', author: user)
+
+    user.most_3_recent_posts.each do |p|
+      visit user_path(user)
+      find("a[href*='/users/#{user.id}/posts/#{p.id}']").click
+      expect(page).to have_current_path(user_post_path(user, p))
+    end
+  end
 end

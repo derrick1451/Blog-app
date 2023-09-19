@@ -5,7 +5,7 @@ RSpec.describe 'Posts Index Page', type: :system do
     @user = User.create(Name: 'Derrick')
 
     @post1 = @user.posts.create(Title: 'Sample Post Title', Text: 'Sample Post Content')
-    @post2 = @user.posts.create(Title: 'Sample Post Title2', Text: 'Sample Post Content')
+    @post2 = @user.posts.create(Title: 'some random work', Text: 'Sample Post Content')
 
     Comment.create(post: @post1, author: @user, Text: 'Sample Post Comment')
     Like.create(post: @post1, author: @user)
@@ -32,6 +32,7 @@ RSpec.describe 'Posts Index Page', type: :system do
 
     it 'shows all elements of a post' do
       @user.posts.each do |post|
+        expect(page).to have_content(post.Title)
         expect(page).to have_content(post.Text)
         expect(page).to have_content("Comments: #{post.CommentsCounter}")
         expect(page).to have_content("Likes: #{post.LikesCounter}")
