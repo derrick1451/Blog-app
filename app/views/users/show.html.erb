@@ -12,7 +12,8 @@
 </div>
 <div class='posts flex direction'>
 <%@user_id.most_3_recent_posts.each do |post|%>
-<div class='post'>
+<a href="/users/<%= @user_id.id %>/posts/<%= post.id %>" class="user-post">
+ <div class='post'>
 <h3>Post: <%=post.id%></h3>
 <p><%=post.Text%></p>
 <div class='comments-likes flex'>
@@ -20,6 +21,7 @@
 <p>Likes: <%=post.LikesCounter%></p>
 </div>
 </div>
+  </a>
 <%end%>
 </div>
 <button><%=link_to 'see all posts', user_posts_path(@user_id) ,class:'btn'%></button>
@@ -28,7 +30,7 @@
 
 
 
-
+ 
 
 
 
