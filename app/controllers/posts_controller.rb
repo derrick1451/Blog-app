@@ -33,6 +33,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(params.require(:post).permit(:Title, :Text))
+    authorize! :create, @post
     respond_to do |format|
       format.html do
         if @post.save
