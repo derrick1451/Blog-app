@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
       format.html { render :new, locals: { comment: @comment } }
     end
   end
+
   def delete
     @user = User.includes(:posts).find(params[:user_id])
     @post = @user.posts.includes(:comments).find(params[:post_id])
@@ -16,10 +17,12 @@ class CommentsController < ApplicationController
 
     if @comment.destroy
       redirect_to user_post_path(
-        @user, @post), notice: 'Comment deleted successfully!'
+        @user, @post
+      ), notice: 'Comment deleted successfully!'
     else
       redirect_to user_post_path(@user, @post), alert: 'Error: Comment could not be deleted'
     end
+  end
 
   def create
     @post = Post.find(params[:post_id])

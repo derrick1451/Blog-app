@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       format.html { render :new, locals: { post: @post } }
     end
   end
-  
+
   def delete
     @user = User.includes(:posts).find(params[:user_id])
     @post = @user.posts.includes(:comments).find(params[:id])
