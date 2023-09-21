@@ -19,10 +19,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @user = User.includes(:posts).find(params[:user_id])
     @post = @user.posts.includes(:comments).find(params[:id])
-    authorize! :destroy, @post
 
     if @post.destroy
       redirect_to user_posts_path(@user), notice: 'Post deleted successfully!'
@@ -32,8 +31,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(params.require(:post).permit(:Title, :Text))
-    authorize! :create, @post
+    @post = current_user.posts.new(post_params)
+
     respond_to do |format|
       format.html do
         if @post.save
@@ -45,5 +44,9 @@ class PostsController < ApplicationController
         end
       end
     end
+  end
+private
+  def post_params
+    params.require(:post).permit(:Title, :Text) # Use capital T and capital T
   end
 end

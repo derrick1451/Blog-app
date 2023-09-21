@@ -3,13 +3,15 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    can :read, [Post, Comment]
-    return unless user.present?
-
-    can :create, [Post, Comment]
-    can :destroy, [Post, Comment], author_id: user.id
-    return unless user.admin?
-
-    can :manage, :all
+    
+    
+    if user.role == 'admin'
+      can :manage, :all
+    else
+      can :read, :all
+      can :destroy, [Post, Comment], author_id: user.id
+      can :create, [Post, Comment] # Allow creating new posts and comments
+      can :update, [Post, Comment], author_id: user.id # Allow updating their own posts and comments
+    end
   end
 end

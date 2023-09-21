@@ -9,24 +9,23 @@ class CommentsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @user = User.includes(:posts).find(params[:user_id])
     @post = @user.posts.includes(:comments).find(params[:post_id])
     @comment = @post.comments
-    authorize! :destroy, @comment
 
     if @comment.destroy
       redirect_to user_post_path(
         @user, @post
       ), notice: 'Comment deleted successfully!'
     else
-      redirect_to user_post_path(@user, @post), alert: 'Error: Comment could not be deleted'
+      redirect_to user_post_path(@userz, @post), alert: 'Error: Comment could not be deleted'
     end
   end
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(params.require(:comment).permit(:Text))
+    @comment = @post.comments.new(comment_params)
     @comment.author = current_user
     respond_to do |format|
       format.html do
@@ -39,5 +38,9 @@ class CommentsController < ApplicationController
         end
       end
     end
+  end
+  private
+  def comment_params
+    params.require(:comment).permit(:Text) # Use capital T and capital T
   end
 end
