@@ -45,7 +45,9 @@ class PostsController < ApplicationController
       end
     end
   end
-private
+
+  private
+
   def post_params
     params.require(:post).permit(:Title, :Text) # Use capital T and capital T
   end
