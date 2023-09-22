@@ -6,10 +6,17 @@
   <h4><%= @post.Text %></h4>
   <div>
   <%@post.comments.each do |comment|%>
-  <p><%=comment.author.Name%>:<%=comment.Text%>  </p>
+  <div class="comment">
+  <p><%=comment.author.Name%>:<%=comment.Text%> </p>
+<% if can? :destroy, comment %>
+  <%= link_to 'Delete', user_post_comment_path(comment.author, comment.post, comment),class:'commentz', method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this comment?' } %>
+   <% end %>
+   </div>
   <%end%>
   </div>
-  
    <button><%= link_to "Add a comment", new_user_post_comment_path(current_user, @post),class:'add-comment' %></button>
    <%= button_to 'Like', user_post_likes_path(current_user, @post), method: :post%>
+    <% if can? :destroy, @post %>
+  <button>  <%= link_to 'Delete', user_post_path(current_user, @post),class:'add-comment', data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this post?' }%></button>
+  <% end %>
 </div>

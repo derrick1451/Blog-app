@@ -1,13 +1,13 @@
 <div class="container flex direction">
 <%@users.each do |user|%>
-<a  href='users/<%=user.id%>'>
-<div class='user-body flex'>
-<img src='<%=user.Photo%>' alt= '<%=user.Name%>'>
-<div class='user-content flex'>
-<h2><%=user.Name%></h2>
-<p>Number of posts: <%=user.PostsCounter%></p>
+<%= link_to user_path(user) do %>
+    <div class='user-body flex'>
+        <img src='<%=user.Photo%>' alt= '<%=user.Name%>'>
+        <div class='user-content flex'>
+            <h2><%=user.Name%></h2>
+            <p>Number of posts: <%=user.PostsCounter%></p>
+        </div>
 </div>
-</div>
-</a>
+<%end%>
 <%end%>
 </div>
